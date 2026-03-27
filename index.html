@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ummah — Islamic Dua & Prayer Companion</title>
+<meta name="description" content="A beautiful collection of authentic Islamic duas, surahs, and prayers with transliteration and translation.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        emerald: { 950: '#064E3B', 900: '#0F3D3E', 800: '#115E4A', 700: '#167A5E' },
+        gold: { 400: '#E8C872', 500: '#D4A843', 600: '#B8912E', 700: '#9A7620' },
+        cream: { 50: '#FFFEF7', 100: '#FFF9E8', 200: '#FFF3D1' },
+        night: { 900: '#1A1A2E', 800: '#16213E', 700: '#1E2A4A' }
+      },
+      fontFamily: {
+        amiri: ['Amiri', 'serif'],
+        body: ['Outfit', 'system-ui', 'sans-serif'],
+      }
+    }
+  }
+}
+</script>
+<style>
+  /* Islamic geometric pattern */
+  .islamic-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4A84320' stroke-width='0.8'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Cpath d='M40 10L70 40L40 70L10 40Z'/%3E%3Cpath d='M40 20L60 40L40 60L20 40Z'/%3E%3Ccircle cx='40' cy='40' r='8'/%3E%3Cpath d='M0 0L40 40M80 0L40 40M0 80L40 40M80 80L40 40'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .dark .islamic-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4A84315' stroke-width='0.8'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Cpath d='M40 10L70 40L40 70L10 40Z'/%3E%3Cpath d='M40 20L60 40L40 60L20 40Z'/%3E%3Ccircle cx='40' cy='40' r='8'/%3E%3Cpath d='M0 0L40 40M80 0L40 40M0 80L40 40M80 80L40 40'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Gold shimmer on header text */
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  .gold-shimmer {
+    background: linear-gradient(90deg, #D4A843 0%, #E8C872 25%, #FFFEF7 50%, #E8C872 75%, #D4A843 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 6s ease-in-out infinite;
+  }
+  .dark .gold-shimmer {
+    background: linear-gradient(90deg, #D4A843 0%, #E8C872 25%, #FFF9E8 50%, #E8C872 75%, #D4A843 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Arabesque divider */
+  .arabesque-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #D4A84360, #D4A843, #D4A84360, transparent);
+  }
+
+  /* Tab scroll */
+  .tab-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+  .tab-scroll::-webkit-scrollbar { display: none; }
+
+  /* Card enter animation */
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .card-animate { animation: cardIn 0.4s ease-out both; }
+
+  /* Subtle pulse for copy feedback */
+  @keyframes copyPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+  .copy-pulse { animation: copyPulse 0.3s ease; }
+
+  /* Star pattern for header */
+  .star-border {
+    background: repeating-linear-gradient(90deg, transparent 0px, transparent 12px, #D4A84340 12px, #D4A84340 13px);
+  }
+
+  /* Smooth transitions */
+  * { transition-property: background-color, border-color, color, opacity; transition-duration: 0.2s; }
+
+  /* Verse number ornament */
+  .verse-num {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, #064E3B, #0F3D3E);
+    clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+    display: flex; align-items: center; justify-content: center;
+    color: #D4A843; font-size: 12px; font-weight: 600; flex-shrink: 0;
+  }
+  .dark .verse-num {
+    background: linear-gradient(135deg, #D4A843, #B8912E);
+    color: #1A1A2E;
+  }
+</style>
+</head>
+
+<body class="bg-cream-50 dark:bg-night-900 font-body text-emerald-950 dark:text-cream-100 min-h-screen transition-colors duration-300"
+  x-data="ummahApp()" x-init="init()">
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="relative overflow-hidden">
+  <!-- Geometric pattern overlay -->
+  <div class="absolute inset-0 islamic-pattern opacity-60"></div>
+
+  <!-- Top decorative border -->
+  <div class="h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
+
+  <div class="relative z-10 px-4 pt-8 pb-6 text-center">
+    <!-- Bismillah -->
+    <p class="font-amiri text-gold-500 dark:text-gold-400 text-lg md:text-xl tracking-wide mb-2 opacity-90">
+      &#65010;
+    </p>
+    <p class="font-amiri italic text-gold-600 dark:text-gold-400 text-sm md:text-base mb-6 opacity-75">
+      Bismillahir Rahmanir Rahim
+    </p>
+
+    <!-- App Title -->
+    <h1 class="font-amiri text-5xl md:text-6xl font-bold mb-2">
+      <span class="gold-shimmer">Ummah</span>
+    </h1>
+    <p class="font-body text-sm md:text-base text-emerald-800 dark:text-cream-200 opacity-70 tracking-widest uppercase">
+      Dua &amp; Prayer Companion
+    </p>
+
+    <!-- Dark mode toggle -->
+    <button @click="toggleDark()" class="absolute top-6 right-4 w-10 h-10 rounded-full bg-white/60 dark:bg-white/10 backdrop-blur flex items-center justify-center hover:bg-white/80 dark:hover:bg-white/20 transition-all shadow-sm" aria-label="Toggle dark mode">
+      <svg x-show="!darkMode" class="w-5 h-5 text-emerald-950" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+      <svg x-show="darkMode" class="w-5 h-5 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+  </div>
+
+  <!-- Bottom decorative border -->
+  <div class="arabesque-divider"></div>
+</header>
+
+<!-- ═══════════ SEARCH BAR ═══════════ -->
+<div class="sticky top-0 z-30 bg-cream-50/90 dark:bg-night-900/90 backdrop-blur-lg border-b border-gold-500/10">
+  <div class="max-w-6xl mx-auto px-4 py-3">
+    <div class="relative">
+      <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-800/40 dark:text-cream-200/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" x-model="searchQuery" placeholder="Search duas, surahs, prayers..."
+        class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-night-800 border border-emerald-950/10 dark:border-gold-500/15 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500/40 placeholder:text-emerald-800/30 dark:placeholder:text-cream-200/30 font-body">
+      <button x-show="searchQuery" @click="searchQuery = ''" class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-800/40 hover:text-emerald-800/70 dark:text-cream-200/40">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════ TAB NAVIGATION ═══════════ -->
+  <div class="tab-scroll overflow-x-auto px-4 pb-3" x-ref="tabBar">
+    <div class="flex gap-1.5 min-w-max max-w-6xl mx-auto">
+      <template x-for="cat in categories" :key="cat.id">
+        <button @click="setTab(cat.id)" :class="activeTab === cat.id
+          ? 'bg-emerald-950 dark:bg-gold-500 text-white dark:text-night-900 shadow-lg shadow-emerald-950/20 dark:shadow-gold-500/20'
+          : 'bg-white dark:bg-night-800 text-emerald-800 dark:text-cream-200 hover:bg-emerald-950/5 dark:hover:bg-gold-500/10'"
+          class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all duration-200">
+          <span x-html="cat.icon" class="w-4 h-4 flex-shrink-0"></span>
+          <span x-text="cat.label"></span>
+          <span x-text="'(' + getCount(cat.id) + ')'" class="opacity-50 text-[10px]"></span>
+        </button>
+      </template>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CONTENT AREA ═══════════ -->
+<main class="max-w-6xl mx-auto px-4 py-8">
+  <!-- Category description -->
+  <div class="mb-6">
+    <h2 class="font-amiri text-2xl md:text-3xl text-emerald-950 dark:text-cream-100" x-text="currentCategory?.label"></h2>
+    <p class="text-sm text-emerald-800/60 dark:text-cream-200/50 mt-1" x-text="currentCategory?.desc"></p>
+  </div>
+
+  <!-- Dua cards grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <template x-for="(dua, index) in filteredDuas" :key="dua.id">
+      <div class="card-animate group relative bg-white dark:bg-night-800 rounded-2xl border border-emerald-950/5 dark:border-gold-500/10 shadow-sm hover:shadow-xl hover:shadow-emerald-950/5 dark:hover:shadow-gold-500/5 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden"
+           :style="'animation-delay:' + (index * 60) + 'ms'"
+           :class="dua.type === 'surah' ? 'md:col-span-2 lg:col-span-3' : ''">
+
+        <!-- Card top accent -->
+        <div class="h-0.5 bg-gradient-to-r from-emerald-950/20 via-gold-500/60 to-emerald-950/20 dark:from-gold-500/10 dark:via-gold-500/40 dark:to-gold-500/10"></div>
+
+        <div class="p-5 md:p-6">
+          <!-- Header row -->
+          <div class="flex items-start justify-between gap-3 mb-4">
+            <div>
+              <h3 class="font-amiri text-lg md:text-xl font-bold text-emerald-950 dark:text-cream-100 leading-tight" x-text="dua.title"></h3>
+              <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-emerald-950/5 dark:bg-gold-500/10 text-[10px] font-medium text-emerald-800 dark:text-gold-400 uppercase tracking-wider" x-text="dua.source"></span>
+                <template x-if="dua.status">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium uppercase tracking-wider"
+                    :class="dua.status === 'Sahih' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400' : dua.status === 'Hasan' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400' : 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400'"
+                    x-text="dua.status"></span>
+                </template>
+              </div>
+            </div>
+            <!-- Copy button -->
+            <button @click="copyDua(dua, $event)" class="flex-shrink-0 w-9 h-9 rounded-xl bg-emerald-950/5 dark:bg-gold-500/10 flex items-center justify-center hover:bg-emerald-950/10 dark:hover:bg-gold-500/20 transition-colors" :title="'Copy ' + dua.title">
+              <svg class="w-4 h-4 text-emerald-800/50 dark:text-gold-400/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+
+          <!-- Regular dua display -->
+          <template x-if="dua.type !== 'surah' && dua.type !== 'laylatul'">
+            <div>
+              <!-- Transliteration -->
+              <div class="mb-4" x-show="dua.arabic">
+                <p class="font-amiri italic text-base md:text-lg leading-relaxed text-emerald-800 dark:text-gold-400" x-text="dua.arabic"></p>
+              </div>
+
+              <!-- Divider -->
+              <div class="arabesque-divider mb-4" x-show="dua.arabic"></div>
+
+              <!-- Translation -->
+              <p class="text-sm leading-relaxed text-emerald-950/70 dark:text-cream-200/70" x-text="dua.translation"></p>
+            </div>
+          </template>
+
+          <!-- Surah display (expandable) -->
+          <template x-if="dua.type === 'surah'">
+            <div x-data="{ expanded: false }">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-sm text-emerald-800/60 dark:text-cream-200/50" x-text="dua.ayahs.length + ' verses'"></span>
+                <span class="text-emerald-800/30 dark:text-cream-200/20">|</span>
+                <span class="text-sm text-emerald-800/60 dark:text-cream-200/50" x-text="dua.translation"></span>
+              </div>
+
+              <!-- First 3 verses always visible -->
+              <div class="space-y-4 mb-4">
+                <template x-for="ayah in (expanded ? dua.ayahs : dua.ayahs.slice(0, 3))" :key="ayah.num">
+                  <div class="flex gap-3 items-start">
+                    <div class="verse-num mt-0.5">
+                      <span x-text="ayah.num"></span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="font-amiri italic text-sm md:text-base leading-relaxed text-emerald-800 dark:text-gold-400 mb-1" x-text="ayah.arabic"></p>
+                      <p class="text-xs leading-relaxed text-emerald-950/50 dark:text-cream-200/50" x-text="ayah.translation"></p>
+                    </div>
+                  </div>
+                </template>
+              </div>
+
+              <!-- Expand button -->
+              <button @click="expanded = !expanded"
+                class="w-full py-2.5 rounded-xl border border-dashed border-emerald-950/15 dark:border-gold-500/20 text-xs font-medium text-emerald-800/60 dark:text-gold-400/60 hover:bg-emerald-950/5 dark:hover:bg-gold-500/10 transition-colors flex items-center justify-center gap-2">
+                <span x-text="expanded ? 'Show Less' : 'Show All ' + dua.ayahs.length + ' Verses'"></span>
+                <svg :class="expanded ? 'rotate-180' : ''" class="w-3 h-3 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </div>
+          </template>
+
+          <!-- Laylatul Qadr display -->
+          <template x-if="dua.type === 'laylatul'">
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <span class="px-2 py-0.5 rounded-md bg-purple-100 dark:bg-purple-900/30 text-[10px] font-medium text-purple-800 dark:text-purple-400 uppercase tracking-wider">Albanian Prayers</span>
+                <span class="text-sm text-emerald-800/60 dark:text-cream-200/50" x-text="dua.content.length + ' prayers'"></span>
+              </div>
+              <div class="space-y-3 max-h-[500px] overflow-y-auto pr-2" style="scrollbar-width: thin;">
+                <template x-for="(prayer, i) in dua.content" :key="i">
+                  <div class="flex gap-3 items-start">
+                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-950/5 dark:bg-gold-500/10 flex items-center justify-center text-[10px] font-semibold text-emerald-800/50 dark:text-gold-400/50 mt-0.5" x-text="i + 1"></span>
+                    <p class="text-sm leading-relaxed text-emerald-950/70 dark:text-cream-200/70" x-text="prayer"></p>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </template>
+
+          <!-- Note -->
+          <template x-if="dua.note">
+            <p class="mt-4 text-xs italic text-gold-600 dark:text-gold-400/60 flex items-start gap-1.5">
+              <svg class="w-3.5 h-3.5 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span x-text="dua.note"></span>
+            </p>
+          </template>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <!-- Empty state -->
+  <div x-show="filteredDuas.length === 0" class="text-center py-20">
+    <div class="w-16 h-16 rounded-full bg-emerald-950/5 dark:bg-gold-500/10 flex items-center justify-center mx-auto mb-4">
+      <svg class="w-7 h-7 text-emerald-800/30 dark:text-gold-400/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    </div>
+    <p class="text-emerald-800/40 dark:text-cream-200/40 text-sm">No duas found matching your search.</p>
+  </div>
+
+  <!-- Copy toast -->
+  <div x-show="showToast" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-2.5 bg-emerald-950 dark:bg-gold-500 text-white dark:text-night-900 rounded-xl text-sm font-medium shadow-xl">
+    Copied to clipboard
+  </div>
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="mt-12 pb-8">
+  <div class="arabesque-divider mb-8"></div>
+  <div class="text-center">
+    <p class="font-amiri text-gold-500 dark:text-gold-400 text-lg mb-1">&#65010;</p>
+    <p class="text-xs text-emerald-800/40 dark:text-cream-200/30 tracking-wider uppercase">Built with love for the Ummah</p>
+    <p class="text-[10px] text-emerald-800/20 dark:text-cream-200/15 mt-2">All duas verified from authentic sources — Quran, Sahih al-Bukhari, Sahih Muslim, and other reliable collections.</p>
+  </div>
+</footer>
+
+<script>
+function ummahApp() {
+  return {
+    darkMode: false,
+    activeTab: 'morning',
+    searchQuery: '',
+    showToast: false,
+
+    categories: [
+      { id: 'morning', label: 'Morning Duas', desc: 'Start your day with remembrance of Allah. Recite these after Fajr prayer.', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M12 3v1m0 16v1m-9-9H2m20 0h-1m-2.636-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707"/><circle cx="12" cy="12" r="4"/></svg>' },
+      { id: 'night', label: 'Night Duas', desc: 'Protect yourself before sleep with these evening adhkar and supplications.', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>' },
+      { id: 'travel', label: 'Travel', desc: 'Seek Allah\'s protection and ease when embarking on a journey.', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>' },
+      { id: 'protection', label: 'Protection', desc: 'Shield yourself with these powerful duas for safety and divine protection.', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>' },
+      { id: 'wealth', label: 'Wealth & Rizq', desc: 'Ask Allah for halal sustenance, guidance, and self-sufficiency.', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M8 10h8M9 14h6"/></svg>' },
+      { id: 'mental', label: 'Mental Health', desc: 'Find peace and relief from worry, grief, and anxiety through these supplications.', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>' },
+      { id: 'surahs', label: 'Surahs', desc: 'Complete surahs and powerful Quranic verses for daily recitation.', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>' },
+      { id: 'salah', label: 'Salah', desc: 'Essential recitations for your daily prayers — Tashahhud, Salawat, and Quranic duas.', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>' },
+      { id: 'special', label: 'Special', desc: 'Prayers for Laylatul Qadr, Ramadan, and other blessed occasions.', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>' }
+    ],
+
+    duas: [
+      // ═══ MORNING ═══
+      {
+        id: 1, title: 'Morning Dhikr — Tawheed', category: 'morning', tags: ['morning'],
+        arabic: 'La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu, wa Huwa \'ala kulli shay\'in Qadir.',
+        translation: 'None has the right to be worshipped except Allah, alone, without partner. To Him belongs sovereignty and all praise, and He is over all things omnipotent.',
+        source: 'Sahih al-Bukhari 6403', status: 'Sahih',
+        note: 'Say this 100 times in the morning for immense reward and protection.'
+      },
+      {
+        id: 2, title: 'Dua When Leaving Home', category: 'morning', tags: ['morning', 'protection'],
+        arabic: 'Bismillahi, tawakkaltu \'alallahi, wa la hawla wa la quwwata illa billah.',
+        translation: 'In the name of Allah, I place my trust in Allah, and there is no might nor power except with Allah.',
+        source: 'Jami\' at-Tirmidhi 3426', status: 'Sahih',
+        note: 'Upon saying this, one is guided, defended, and protected, and the devil turns away from him.'
+      },
+      {
+        id: 3, title: 'Sayyidul Istighfar — Master of Forgiveness', category: 'morning', tags: ['morning', 'night'],
+        arabic: 'Allahumma Anta Rabbi, la ilaha illa Anta, khalaqtani wa ana \'abduka, wa ana \'ala \'ahdika wa wa\'dika mastata\'tu. A\'udhu bika min sharri ma sana\'tu, abu\'u laka bini\'matika \'alayya, wa abu\'u bidhanbi, faghfir li, fa innahu la yaghfirudh-dhunuba illa Anta.',
+        translation: 'O Allah, You are my Lord, none has the right to be worshipped except You. You created me and I am Your servant, and I abide by Your covenant and promise as best I can. I seek refuge in You from the evil of what I have done. I acknowledge Your favor upon me, and I acknowledge my sin, so forgive me, for none forgives sins except You.',
+        source: 'Sahih al-Bukhari 6306', status: 'Sahih',
+        note: 'Whoever says this in the morning with firm belief and dies that day, he will be among the people of Paradise.'
+      },
+
+      // ═══ NIGHT ═══
+      {
+        id: 4, title: 'Ayatul Kursi', category: 'night', tags: ['night', 'protection', 'surahs'],
+        arabic: 'Allahu la ilaha illa Huwal-Hayyul-Qayyum. La ta\'khudhuhuu sinatun wa la nawm. Lahu ma fis-samawati wa ma fil-ard. Man dhal-ladhi yashfa\'u \'indahu illa bi-idhnih. Ya\'lamu ma bayna aydihim wa ma khalfahum. Wa la yuhituna bishay\'in min \'ilmihi illa bima sha\'. Wasi\'a kursiyyuhus-samawati wal-ard. Wa la ya\'uduhu hifdhuhuma. Wa Huwal-\'Aliyyul-\'Adhim.',
+        translation: 'Allah! There is no deity except Him, the Ever-Living, the Sustainer of existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.',
+        source: 'Quran 2:255', status: 'Quranic',
+        note: 'Whoever recites Ayatul Kursi before sleeping, Allah appoints a guardian angel to protect them until morning.'
+      },
+      {
+        id: 5, title: 'Dua Before Sleep', category: 'night', tags: ['night'],
+        arabic: 'Allahumma innaka khalaqta nafsi wa Anta tawaffaha, laka mamatuha wa mahyaha. In ahyaytaha fahfadhha, wa in amattaha faghfir laha. Allahumma inni as\'alukal-\'afiyah.',
+        translation: 'O Allah, You have created my soul and You take it back. Unto You is its death and its life. If You give it life, protect it; and if You cause it to die, forgive it. O Allah, I ask You for well-being.',
+        source: 'Sahih Muslim 2712', status: 'Sahih'
+      },
+
+      // ═══ TRAVEL ═══
+      {
+        id: 6, title: 'Travel Dua — Dua al-Safar', category: 'travel', tags: ['travel'],
+        arabic: 'Allahu Akbar, Allahu Akbar, Allahu Akbar. Subhanal-ladhi sakhkhara lana hadha wa ma kunna lahu muqrinin, wa inna ila Rabbina lamunqalibun. Allahumma inna nas\'aluka fi safarana hadhal-birra wat-taqwa, wa minal-\'amali ma tarda. Allahumma hawwin \'alayna safarana hadha watwi \'anna bu\'dahu. Allahumma Antas-sahibu fis-safari wal-khalifatu fil-ahli. Allahumma inni a\'udhu bika min wa\'tha\'is-safari wa ka\'abatil-mandhari wa su\'il-munqalabi fil-mali wal-ahli.',
+        translation: 'Allah is the Greatest, Allah is the Greatest, Allah is the Greatest. Glory be to Him Who has subjected this to us, and we could never have it by our efforts, and to our Lord we shall return. O Allah, we ask You in this journey for righteousness and piety, and for deeds that are pleasing to You. O Allah, make this journey easy for us and shorten its distance. O Allah, You are the Companion in travel and the Guardian of the family. O Allah, I seek refuge in You from the hardships of travel, from seeing distressing sights, and from finding harm when I return to my family and property.',
+        source: 'Sahih Muslim 1342', status: 'Sahih',
+        note: 'Recite this when you board any means of transport — car, plane, or ship.'
+      },
+
+      // ═══ PROTECTION ═══
+      {
+        id: 7, title: 'La Hawla wa La Quwwata illa Billah', category: 'protection', tags: ['protection', 'morning'],
+        arabic: 'La hawla wa la quwwata illa billah.',
+        translation: 'There is no might nor power except with Allah.',
+        source: 'Sahih al-Bukhari 4205', status: 'Sahih',
+        note: 'A treasure from the treasures of Paradise. Say it abundantly.'
+      },
+      {
+        id: 8, title: 'Dua for Protection from Sin', category: 'protection', tags: ['protection'],
+        arabic: 'Allahummaghfir li dhanbi, wa tahhir qalbi, wa hassin farji minal-fawahish.',
+        translation: 'O Allah, forgive my sin, purify my heart, and guard my chastity from immorality.',
+        source: 'Sunan Abu Dawud 4857', status: 'Hasan'
+      },
+      {
+        id: 9, title: 'Dua of Prophet Nuh — Against Oppression', category: 'protection', tags: ['protection', 'mental'],
+        arabic: 'Rabbi inni maghlobun fantasir.',
+        translation: 'My Lord, indeed I am overpowered, so help me.',
+        source: 'Quran 54:10', status: 'Quranic',
+        note: 'The desperate cry of Prophet Nuh (Noah) when his people rejected him. A powerful dua in times of helplessness.'
+      },
+
+      // ═══ WEALTH & RIZQ ═══
+      {
+        id: 10, title: 'Dua for Halal Sustenance', category: 'wealth', tags: ['wealth'],
+        arabic: 'Allahummakfini bihalalika \'an haramika, wa aghnini bifadlika \'amman siwak.',
+        translation: 'O Allah, suffice me with what You have permitted so that I have no need of that which You have forbidden, and make me independent of all others besides You by Your bounty.',
+        source: 'Jami\' at-Tirmidhi 3563', status: 'Hasan',
+        note: 'Taught by the Prophet ﷺ to Ali ibn Abi Talib when he was in debt.'
+      },
+      {
+        id: 11, title: 'Dua for Guidance & Self-Sufficiency', category: 'wealth', tags: ['wealth', 'morning'],
+        arabic: 'Allahumma inni as\'alukal-huda wat-tuqa wal-\'afafa wal-ghina.',
+        translation: 'O Allah, I ask You for guidance, piety, chastity, and self-sufficiency.',
+        source: 'Sahih Muslim 2721', status: 'Sahih'
+      },
+      {
+        id: 12, title: 'Trusting in Allah\'s Plan', category: 'wealth', tags: ['wealth'],
+        arabic: 'Wa ma tawfiqi illa billahi \'alayhi tawakkaltu wa ilayhi unib.',
+        translation: 'My success is not but through Allah. Upon Him I have relied, and to Him I return.',
+        source: 'Quran 11:88', status: 'Quranic',
+        note: 'Words of Prophet Shu\'ayb (Jethro), reminding us that all success comes from Allah.'
+      },
+
+      // ═══ MENTAL HEALTH ═══
+      {
+        id: 13, title: 'Relief from Depression & Anxiety', category: 'mental', tags: ['mental', 'protection'],
+        arabic: 'Allahumma inni a\'udhu bika minal-hammi wal-hazani, wa a\'udhu bika minal-\'ajzi wal-kasali, wa a\'udhu bika minal-jubni wal-bukhli, wa a\'udhu bika min ghalabatid-dayni wa qahrir-rijal.',
+        translation: 'O Allah, I seek refuge in You from worry and grief, from helplessness and laziness, from cowardice and miserliness, and from being overcome by debt and overpowered by men.',
+        source: 'Sahih al-Bukhari 6369', status: 'Sahih',
+        note: 'The Prophet ﷺ used to say this dua frequently. It covers every form of emotional distress.'
+      },
+      {
+        id: 14, title: 'Dua of Prophet Musa — When in Need', category: 'mental', tags: ['mental', 'wealth'],
+        arabic: 'Rabbi inni lima anzalta ilayya min khayrin faqir.',
+        translation: 'My Lord, indeed I am, for whatever good You would send down to me, in need.',
+        source: 'Quran 28:24', status: 'Quranic',
+        note: 'Prophet Musa (Moses) said this when he was a stranger with nothing — and Allah answered him immediately with shelter, family, and provision.'
+      },
+
+      // ═══ SURAHS ═══
+      {
+        id: 15, title: 'Surah Al-Mulk — The Sovereignty', category: 'surahs', tags: ['surahs', 'night'],
+        type: 'surah',
+        translation: 'Protects from the punishment of the grave. Recite every night before sleep.',
+        source: 'Quran 67:1-30', status: 'Quranic',
+        note: 'The Prophet ﷺ said: "There is a surah in the Quran of thirty verses which will intercede for its companion until he is forgiven." (Tirmidhi 2891)',
+        ayahs: [
+          { num: 1, arabic: 'Tabarakal-ladhi biyadihil-mulku wa Huwa \'ala kulli shay\'in Qadir.', translation: 'Blessed is He in Whose Hand is the dominion, and He is Able to do all things.' },
+          { num: 2, arabic: 'Alladhi khalaqal-mawta wal-hayata liyabluwakum ayyukum ahsanu \'amala, wa Huwal-\'Azizul-Ghafur.', translation: 'He Who created death and life to test which of you is best in deed, and He is the Almighty, the Oft-Forgiving.' },
+          { num: 3, arabic: 'Alladhi khalaqa sab\'a samawatin tibaqan, ma tara fi khalqir-Rahmani min tafawut, farji\'il-basara hal tara min futur.', translation: 'He Who created seven heavens in layers. You do not see in the creation of the Most Merciful any inconsistency. So return your vision; do you see any breaks?' },
+          { num: 4, arabic: 'Thummarji\'il-basara karratayn yanqalib ilaykal-basaru khasi\'an wa huwa hasir.', translation: 'Then return your vision twice again. Your vision will return to you humbled while it is fatigued.' },
+          { num: 5, arabic: 'Walaqad zayyanas-sama\'ad-dunya bimasabiha wa ja\'alnaha rujuman lish-shayatin, wa a\'tadna lahum \'adhaba as-sa\'ir.', translation: 'And We have certainly beautified the nearest heaven with stars and have made them as missiles to drive away the devils, and have prepared for them the punishment of the Blaze.' },
+          { num: 6, arabic: 'Walladhina kafaru birabbihim \'adhabu Jahannama wa bi\'sal-masir.', translation: 'And for those who disbelieved in their Lord is the punishment of Hell, and wretched is the destination.' },
+          { num: 7, arabic: 'Idha ulqu fiha sami\'u laha shahiqan wa hiya tafur.', translation: 'When they are thrown into it, they hear from it a dreadful inhaling while it boils up.' },
+          { num: 8, arabic: 'Takadu tamayyazu minal-ghayz, kullama ulqiya fiha fawjun sa\'alahum khazanatuha alam ya\'tikum nadhir.', translation: 'It almost bursts with rage. Every time a group is thrown into it, its keepers ask them: Did there not come to you a warner?' },
+          { num: 9, arabic: 'Qalu bala qad ja\'ana nadhirun fakadh-dhabna wa qulna ma nazzalallahu min shay\', in antum illa fi dalalin kabir.', translation: 'They will say: Yes, a warner had come to us, but we denied and said: Allah has not sent down anything. You are not but in great error.' },
+          { num: 10, arabic: 'Waqalu law kunna nasma\'u aw na\'qilu ma kunna fi as-habis-sa\'ir.', translation: 'And they will say: If only we had been listening or reasoning, we would not be among the companions of the Blaze.' },
+          { num: 11, arabic: 'Fa\'tarafu bidhanbihim fa-suhqan li-as-habis-sa\'ir.', translation: 'And they will admit their sin, so away with the companions of the Blaze.' },
+          { num: 12, arabic: 'Innal-ladhina yakhshawna Rabbahum bil-ghaybi lahum maghfiratun wa ajrun kabir.', translation: 'Indeed, those who fear their Lord unseen will have forgiveness and great reward.' },
+          { num: 13, arabic: 'Wa asirru qawlakum awijharu bih, innahu \'Alimun bidhatis-sudur.', translation: 'And conceal your speech or publicize it; indeed, He is Knowing of that within the breasts.' },
+          { num: 14, arabic: 'Ala ya\'lamu man khalaq? Wa Huwal-Latiful-Khabir.', translation: 'Does He who created not know, while He is the Subtle, the Acquainted?' },
+          { num: 15, arabic: 'Huwal-ladhi ja\'ala lakumul-arda dhalulan famshuu fi manakibiha wa kulu mir rizqih, wa ilayhin-nushur.', translation: 'It is He who made the earth tame for you, so walk among its slopes and eat of His provision, and to Him is the resurrection.' },
+          { num: 16, arabic: 'A-amintum man fis-sama\'i an yakhsifa bikumul-arda fa-idha hiya tamur.', translation: 'Do you feel secure that He who is above would not cause the earth to swallow you as it shakes?' },
+          { num: 17, arabic: 'Am amintum man fis-sama\'i an yursila \'alaykum hasiban, fasata\'lamuna kayfa nadhir.', translation: 'Or do you feel secure that He who is above would not send against you a storm of stones? Then you would know how My warning was.' },
+          { num: 18, arabic: 'Walaqad kadh-dhabal-ladhina min qablihim fakayfa kana nakir.', translation: 'And already had those before them denied, and how terrible was My reproach.' },
+          { num: 19, arabic: 'Awalam yaraw ilat-tayri fawqahum saffatin wa yaqbidn, ma yumsikuhunna illar-Rahman, innahu bikulli shay\'in Basir.', translation: 'Do they not see the birds above them with wings outspread and folding in? None holds them except the Most Merciful. Indeed He is, of all things, Seeing.' },
+          { num: 20, arabic: 'Amman hadhal-ladhi huwa jundun lakum yansurakum min dunir-Rahman? Inil-kafirun illa fi ghurur.', translation: 'Or who is it that could be an army for you to aid you other than the Most Merciful? The disbelievers are not but in delusion.' },
+          { num: 21, arabic: 'Amman hadhal-ladhi yarzuqukum in amsaka rizqah, bal lajju fi \'utuwwin wa nufur.', translation: 'Or who is it that could provide for you if He withheld His provision? But they have persisted in insolence and aversion.' },
+          { num: 22, arabic: 'Afaman yamshi mukibban \'ala wajhihi ahda amman yamshi sawiyyan \'ala siratim mustaqim.', translation: 'Then is one who walks fallen on his face better guided or one who walks erect on a straight path?' },
+          { num: 23, arabic: 'Qul Huwal-ladhi ansha\'akum wa ja\'ala lakumus-sam\'a wal-absara wal-af\'idah, qalilam ma tashkurun.', translation: 'Say: It is He who produced you and made for you hearing and vision and hearts; little are you grateful.' },
+          { num: 24, arabic: 'Qul Huwal-ladhi dhara\'akum fil-ardi wa ilayhi tuhsharun.', translation: 'Say: It is He who has multiplied you throughout the earth, and to Him you will be gathered.' },
+          { num: 25, arabic: 'Wayaquluna mata hadhal-wa\'du in kuntum sadiqin.', translation: 'And they say: When is this promise, if you should be truthful?' },
+          { num: 26, arabic: 'Qul innamal-\'ilmu \'indallahi wa innama ana nadhirun mubin.', translation: 'Say: The knowledge is only with Allah, and I am only a clear warner.' },
+          { num: 27, arabic: 'Falamma ra\'awhu zulfatan si\'at wujuhul-ladhina kafaru wa qila hadhal-ladhi kuntum bihi tadda\'un.', translation: 'But when they see it approaching, the faces of those who disbelieved will be distressed, and it will be said: This is that for which you used to call.' },
+          { num: 28, arabic: 'Qul ara\'aytum in ahlakaniyallahu wa man ma\'iya aw rahimana, faman yujiru-kafirina min \'adhabin alim.', translation: 'Say: Have you considered whether Allah should cause my death and those with me or have mercy upon us, who can protect the disbelievers from a painful punishment?' },
+          { num: 29, arabic: 'Qul Huwar-Rahmanu amanna bihi wa \'alayhi tawakkalna, fasata\'lamuna man huwa fi dalalin mubin.', translation: 'Say: He is the Most Merciful; we have believed in Him, and upon Him we have relied. And you will come to know who it is that is in clear error.' },
+          { num: 30, arabic: 'Qul ara\'aytum in asbaha ma\'ukum ghawran faman ya\'tikum bima\'in ma\'in.', translation: 'Say: Have you considered if your water was to become sunken, then who could bring you flowing water?' }
+        ]
+      },
+      {
+        id: 16, title: 'Surah Al-Kahf — Read on Friday', category: 'surahs', tags: ['surahs', 'special'],
+        arabic: 'Surah Al-Kahf — Chapter 18 of the Quran',
+        translation: 'Whoever reads Surah Al-Kahf on Friday, a light will shine for him between the two Fridays.',
+        source: 'Sahih al-Jami\' 6470', status: 'Sahih',
+        note: 'Read every Friday for spiritual light and protection from Dajjal. Best read between Maghrib on Thursday and Maghrib on Friday.'
+      },
+
+      // ═══ SALAH ═══
+      {
+        id: 17, title: 'Tashahhud — At-Tahiyyat', category: 'salah', tags: ['salah'],
+        arabic: 'At-tahiyyatu lillahi was-salawatu wat-tayyibat. As-salamu \'alayka ayyuhan-Nabiyyu wa rahmatullahi wa barakatuh. As-salamu \'alayna wa \'ala \'ibadillahis-salihin. Ash-hadu an la ilaha illallah, wa ash-hadu anna Muhammadan \'abduhu wa rasuluh.',
+        translation: 'All compliments, prayers, and pure words are for Allah. Peace be upon you, O Prophet, and the mercy of Allah and His blessings. Peace be upon us and upon the righteous servants of Allah. I testify that there is no deity except Allah, and I testify that Muhammad is His servant and messenger.',
+        source: 'Sahih al-Bukhari 831', status: 'Sahih',
+        note: 'Recited in every prayer during the sitting position (Tashahud).'
+      },
+      {
+        id: 18, title: 'Salawat — Durood Ibrahim', category: 'salah', tags: ['salah'],
+        arabic: 'Allahumma salli \'ala Muhammadin wa \'ala ali Muhammad, kama sallayta \'ala Ibrahima wa \'ala ali Ibrahim, innaka Hamidum Majid. Allahumma barik \'ala Muhammadin wa \'ala ali Muhammad, kama barakta \'ala Ibrahima wa \'ala ali Ibrahim, innaka Hamidum Majid.',
+        translation: 'O Allah, send prayers upon Muhammad and upon the family of Muhammad, as You sent prayers upon Ibrahim and upon the family of Ibrahim. Indeed, You are Praiseworthy and Glorious. O Allah, send blessings upon Muhammad and upon the family of Muhammad, as You sent blessings upon Ibrahim and upon the family of Ibrahim. Indeed, You are Praiseworthy and Glorious.',
+        source: 'Sahih al-Bukhari 3370', status: 'Sahih',
+        note: 'Recited after Tashahhud in the final sitting of every prayer.'
+      },
+      {
+        id: 19, title: 'Rabbana Atina', category: 'salah', tags: ['salah', 'special'],
+        arabic: 'Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina \'adhaban-nar.',
+        translation: 'Our Lord, give us in this world that which is good and in the Hereafter that which is good, and protect us from the punishment of the Fire.',
+        source: 'Quran 2:201', status: 'Quranic',
+        note: 'The most frequently made dua by the Prophet ﷺ. (Bukhari & Muslim)'
+      },
+      {
+        id: 20, title: 'Dua for Parents & Believers', category: 'salah', tags: ['salah', 'special'],
+        arabic: 'Rabbanagh-fir li wa liwalidayya wa lil-mu\'minina yawma yaqumul-hisab.',
+        translation: 'Our Lord, forgive me and my parents and the believers on the Day the account is established.',
+        source: 'Quran 14:41', status: 'Quranic',
+        note: 'Dua of Prophet Ibrahim (Abraham). Make this dua regularly for your parents.'
+      },
+
+      // ═══ SPECIAL OCCASIONS ═══
+      {
+        id: 21, title: 'Laylatul Qadr Prayers — Night of Power', category: 'special', tags: ['special'],
+        type: 'laylatul',
+        source: 'Personal Prayers (Albanian tradition)', status: 'Dua',
+        note: 'These heartfelt prayers are traditionally recited during the last 10 nights of Ramadan, especially on the odd nights (21st, 23rd, 25th, 27th, 29th).',
+        content: [
+          'O Allah, grant me success in the Hereafter, safety from the Fire, and enable me to enter Paradise!',
+          'O Allah, forgive me, my parents, my family, sisters, brothers, children, relatives, and all believers!',
+          'O Allah, make me and my family among those who will receive the book of deeds in the right hand.',
+          'O Allah, grant me a blessed death. Allow me to say the Shahada during death and grant me the intercession of Prophet Muhammad \uFDFA.',
+          'O Allah, grant me the companionship of Prophet Muhammad \uFDFA, his family, and companions in Paradise.',
+          'O Allah, guide my parents, my family, my children, and those I love, and save them from the Fire.',
+          'O Allah, unite me in Paradise with those I love for Your sake!',
+          'O Lord, I ask You to perfect my faith and worship.',
+          'O Allah, accept my deeds, increase my rewards and Your mercy. Cleanse my sins and forgive them completely.',
+          'O Allah, grant me, my parents, my family, and children guidance and steadfastness in faith and iman.',
+          'O Allah, make me among those whom You love, forgive, and place under Your shade on the Day when there is no shade except the shade of Your Throne.',
+          'O my Lord, do not allow doubt in my faith, in Your Oneness and Power!',
+          'O Allah, increase my love for You and for Prophet Muhammad \uFDFA.',
+          'O Allah, forgive me and increase Your blessings and bounties upon me.',
+          'O Allah, guide me to more opportunities to do good seeking Your pleasure.',
+          'O Lord, purify my intentions, let them be only for You. Save me from showing off, arrogance, and false pride.',
+          'O Allah, do not allow me to hurt, offend, backbite others, or do injustice to them.',
+          'O my Creator, do not leave me alone! Bless me with a righteous family and children who will be the coolness of my eyes.',
+          'O my Lord, make me among those who are patient and obedient to You and to parents.',
+          'O Allah, save me from the trial of the Dajjal, from the punishment of the grave, and from the Fire of Jahannam!',
+          'O Allah, increase my ability to give sadaqah (charity).',
+          'O Allah, bless me with good health so that I can make sujood (prostration) with ease.',
+          'O Allah, cure me completely from every illness. O Allah, heal the sick!',
+          'O Allah, help the poor and the orphans!',
+          'O Allah, make my grave a garden from the gardens of Paradise.',
+          'O Allah, forgive the believing men and women, the living and the dead.',
+          'O Allah, forgive me, have mercy on me, guide me, grant me health, and provide for me.',
+          'O Allah, give me good in this world and good in the Hereafter, and protect me from the Fire.',
+          'O Allah, enable me to exit this Ramadan with my sins forgiven!',
+          'O Allah, grant me success everywhere, solve my problems, and set my affairs right!',
+          'O my Lord, grant me beneficial knowledge, good provision, and accepted deeds.',
+          'O Allah, suffice me with what is halal and keep me from haram. Make me rich through Your bounty so I need not seek from anyone but You.',
+          'O Allah, I seek Your protection from worry and grief, from helplessness and laziness, from miserliness and cowardice, from being overcome by debt and overpowered by people.',
+          'O Allah, enable me to perform Hajj. Do not humiliate me on the Day of Judgment, nor before You, the prophets, angels, and people.',
+          'O Allah, enable me to cross the bridge of Sirat with ease.',
+          'O Allah, grant me Jannatul Firdaus — the highest Paradise!',
+          'O Allah, make the day I stand before You the happiest day of my life.',
+          'O Allah, grant me the sight of Your Face in Paradise.'
+        ]
+      }
+    ],
+
+    get currentCategory() {
+      return this.categories.find(c => c.id === this.activeTab);
+    },
+
+    get filteredDuas() {
+      let results = this.duas.filter(d =>
+        d.category === this.activeTab || (d.tags && d.tags.includes(this.activeTab))
+      );
+
+      if (this.searchQuery.trim()) {
+        const q = this.searchQuery.toLowerCase().trim();
+        results = this.duas.filter(d => {
+          const searchFields = [
+            d.title, d.arabic, d.translation, d.source, d.note
+          ].filter(Boolean).join(' ').toLowerCase();
+
+          if (d.content) {
+            return searchFields.includes(q) || d.content.some(c => c.toLowerCase().includes(q));
+          }
+          if (d.ayahs) {
+            return searchFields.includes(q) || d.ayahs.some(a =>
+              a.arabic.toLowerCase().includes(q) || a.translation.toLowerCase().includes(q)
+            );
+          }
+          return searchFields.includes(q);
+        });
+      }
+
+      return results;
+    },
+
+    init() {
+      this.darkMode = localStorage.getItem('ummah-dark') === 'true';
+      if (this.darkMode) document.documentElement.classList.add('dark');
+
+      const saved = localStorage.getItem('ummah-tab');
+      if (saved && this.categories.some(c => c.id === saved)) {
+        this.activeTab = saved;
+      }
+    },
+
+    toggleDark() {
+      this.darkMode = !this.darkMode;
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('ummah-dark', this.darkMode);
+    },
+
+    setTab(id) {
+      this.activeTab = id;
+      this.searchQuery = '';
+      localStorage.setItem('ummah-tab', id);
+
+      this.$nextTick(() => {
+        const btn = this.$refs.tabBar?.querySelector(`button[class*="shadow-lg"]`);
+        if (btn) btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    },
+
+    getCount(catId) {
+      return this.duas.filter(d => d.category === catId || (d.tags && d.tags.includes(catId))).length;
+    },
+
+    async copyDua(dua, event) {
+      let text = dua.title + '\n\n';
+      if (dua.arabic) text += dua.arabic + '\n\n';
+      if (dua.translation) text += dua.translation + '\n\n';
+      if (dua.ayahs) {
+        dua.ayahs.forEach(a => {
+          text += a.num + '. ' + a.arabic + '\n' + a.translation + '\n\n';
+        });
+      }
+      if (dua.content) {
+        dua.content.forEach((c, i) => {
+          text += (i + 1) + '. ' + c + '\n';
+        });
+      }
+      text += '\n— ' + dua.source;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        const btn = event.currentTarget;
+        btn.classList.add('copy-pulse');
+        setTimeout(() => btn.classList.remove('copy-pulse'), 300);
+
+        this.showToast = true;
+        setTimeout(() => this.showToast = false, 2000);
+      } catch (e) {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        this.showToast = true;
+        setTimeout(() => this.showToast = false, 2000);
+      }
+    }
+  };
+}
+</script>
+</body>
+</html>
