@@ -37,7 +37,7 @@ export default function CopyButton({ dua }: CopyButtonProps) {
       })
     }
 
-    parts.push('', `Source: ${dua.source}`)
+    parts.push('', `Burimi: ${dua.source}`)
 
     return parts.join('\n')
   }, [dua])
@@ -73,7 +73,7 @@ export default function CopyButton({ dua }: CopyButtonProps) {
         bg-emerald-950/5 dark:bg-gold-500/10
         hover:bg-emerald-950/10 dark:hover:bg-gold-500/20
         ${pulsing ? 'copy-pulse' : ''}`}
-      aria-label={copied ? 'Copied' : 'Copy dua'}
+      aria-label={copied ? 'U kopjua' : 'Kopjo duane'}
     >
       {copied ? (
         <svg

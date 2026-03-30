@@ -27,13 +27,13 @@ export async function GET(request: NextRequest) {
 
   const notification = type === 'morning'
     ? {
-        title: 'Fajr Reminder ☀️',
-        body: 'Start your day with morning adhkar and remembrance of Allah',
+        title: 'Koha e Sabahut',
+        body: 'Fillo diten me adhkaret e mengjesit dhe perkujtimin e Allahut',
         url: '/category/morning',
       }
     : {
-        title: 'Night Adhkar 🌙',
-        body: 'Read Surah Al-Mulk and your evening duas before sleep',
+        title: 'Adhkaret e Nates',
+        body: 'Lexo Suren Al-Mulk dhe duate e mbremjes para gjumit',
         url: '/category/night',
       }
 

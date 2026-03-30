@@ -32,7 +32,7 @@ export default function SurahCard({ dua, index }: SurahCardProps) {
               {dua.title}
             </h3>
             <div className="flex items-center gap-2 mt-1.5 text-xs text-emerald-950/50 dark:text-cream-200/50">
-              <span>{ayahs.length} verses</span>
+              <span>{ayahs.length} ajete</span>
               <span className="w-1 h-1 rounded-full bg-current opacity-30" />
               <span>{dua.source}</span>
             </div>
@@ -55,7 +55,7 @@ export default function SurahCard({ dua, index }: SurahCardProps) {
                 {ayah.num}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-amiri italic text-sm text-emerald-800 dark:text-gold-400 leading-relaxed">
+                <p className="font-reading italic text-[15px] text-emerald-800 dark:text-gold-400 leading-[1.8] tracking-wide">
                   {ayah.transliteration}
                 </p>
                 <p className="text-xs text-emerald-950/60 dark:text-cream-200/60 leading-relaxed mt-1">
@@ -75,7 +75,7 @@ export default function SurahCard({ dua, index }: SurahCardProps) {
               hover:bg-emerald-950/5 dark:hover:bg-gold-500/10
               flex items-center justify-center gap-1.5"
           >
-            <span>{expanded ? 'Show less' : `Show all ${ayahs.length} verses`}</span>
+            <span>{expanded ? 'Shfaq me pak' : `Shfaq te ${ayahs.length} ajetet`}</span>
             <svg
               className={`w-3.5 h-3.5 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
               fill="none"

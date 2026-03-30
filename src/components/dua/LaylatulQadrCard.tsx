@@ -26,10 +26,10 @@ export default function LaylatulQadrCard({ dua, index }: LaylatulQadrCardProps) 
             </h3>
             <div className="flex items-center gap-2 mt-1.5">
               <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium uppercase tracking-wider bg-purple-500/10 text-purple-700 dark:bg-purple-400/15 dark:text-purple-300">
-                Albanian Prayers
+                Lutje Shqiptare
               </span>
               <span className="text-xs text-emerald-950/50 dark:text-cream-200/50">
-                {prayers.length} prayers
+                {prayers.length} lutje
               </span>
             </div>
           </div>

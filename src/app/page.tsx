@@ -17,7 +17,7 @@ export default function HomePage() {
             As-salamu alaykum
           </h2>
           <p className="text-sm text-emerald-950/50 dark:text-cream-200/50">
-            Choose a category to begin your dhikr and dua.
+            Zgjidh nje kategori per te filluar dhikrin dhe duane.
           </p>
         </section>
 

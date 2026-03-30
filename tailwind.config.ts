@@ -34,6 +34,7 @@ const config: Config = {
       fontFamily: {
         amiri: ['Amiri', 'serif'],
         body: ['Outfit', 'system-ui', 'sans-serif'],
+        reading: ['var(--font-lora)', 'Lora', 'Georgia', 'serif'],
       },
     },
   },

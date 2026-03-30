@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Amiri, Outfit } from 'next/font/google'
+import { Amiri, Outfit, Lora } from 'next/font/google'
 import './globals.css'
 import BottomNav from '@/components/layout/BottomNav'
 import ServiceWorkerRegistrar from '@/components/ServiceWorkerRegistrar'
@@ -18,9 +18,17 @@ const outfit = Outfit({
   display: 'swap',
 })
 
+const lora = Lora({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-lora',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'Ummah — Dua & Prayer Companion',
-  description: 'Your daily Islamic dua and prayer companion with authentic supplications from Quran and Sunnah.',
+  title: 'Ummah — Lutje & Dua Islame',
+  description: 'Shoqeruesi yt i perditshgem i lutjeve dhe duave islame me transliterim dhe perkthim.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -47,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`dark ${amiri.variable} ${outfit.variable}`}>
+    <html lang="sq" className={`dark ${amiri.variable} ${outfit.variable} ${lora.variable}`}>
       <body className="font-body bg-cream-50 dark:bg-night-900 text-emerald-950 dark:text-cream-50 antialiased min-h-screen">
         <ServiceWorkerRegistrar />
         <main className="pb-20">

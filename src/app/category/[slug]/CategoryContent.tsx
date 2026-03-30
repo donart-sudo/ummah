@@ -35,14 +35,14 @@ export default function CategoryContent({ duas, categoryLabel, categoryDescripti
       <SearchBar
         value={searchQuery}
         onChange={setSearchQuery}
-        placeholder={`Search in ${categoryLabel}...`}
+        placeholder={`Kerko ne ${categoryLabel}...`}
       />
 
       <div className="mt-4 space-y-3">
         {filteredDuas.length === 0 && searchQuery.trim() ? (
           <div className="text-center py-12">
             <p className="text-emerald-950/40 dark:text-cream-50/40 text-sm">
-              No duas found matching your search.
+              Nuk u gjet asnje dua qe perputhet me kerkimin tuaj.
             </p>
           </div>
         ) : (

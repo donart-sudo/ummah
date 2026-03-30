@@ -14,13 +14,13 @@ export default function SearchPage() {
   return (
     <div className="max-w-lg mx-auto px-4 py-6">
       <h1 className="font-amiri text-2xl font-bold text-emerald-950 dark:text-cream-50 mb-4">
-        Search
+        Kerko
       </h1>
 
       <SearchBar
         value={query}
         onChange={setQuery}
-        placeholder="Search duas, surahs, and prayers..."
+        placeholder="Kerko dua, sure dhe lutje..."
         autoFocus
       />
 
@@ -32,7 +32,7 @@ export default function SearchPage() {
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
             <p className="text-sm text-emerald-950/40 dark:text-cream-50/40">
-              Search duas, surahs, and prayers
+              Kerko dua, sure dhe lutje
             </p>
           </div>
         )}
@@ -40,7 +40,7 @@ export default function SearchPage() {
         {query.trim() && results.length === 0 && (
           <div className="text-center py-16">
             <p className="text-sm text-emerald-950/40 dark:text-cream-50/40">
-              No duas found matching your search.
+              Nuk u gjet asnje dua qe perputhet me kerkimin tuaj.
             </p>
           </div>
         )}

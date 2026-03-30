@@ -55,7 +55,7 @@ export default function DuaCard({ dua, index }: DuaCardProps) {
 
         {/* Transliteration */}
         {dua.transliteration && (
-          <p className="font-amiri italic text-base text-emerald-800 dark:text-gold-400 leading-relaxed mb-3">
+          <p className="font-reading italic text-[17px] text-emerald-800 dark:text-gold-400 leading-[1.8] tracking-wide mb-3">
             {dua.transliteration}
           </p>
         )}

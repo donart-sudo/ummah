@@ -105,21 +105,21 @@ export default function SettingsPage() {
           </svg>
         </Link>
         <h1 className="font-amiri text-2xl font-bold text-emerald-950 dark:text-cream-50">
-          Settings
+          Cilesimet
         </h1>
       </div>
 
       {/* Dark Mode */}
       <section className="mb-8">
         <h2 className="text-sm font-semibold text-emerald-950/40 dark:text-cream-50/40 uppercase tracking-wider mb-3">
-          Appearance
+          Pamja
         </h2>
         <div className="bg-white/60 dark:bg-night-800/60 rounded-xl p-4 border border-gold-500/10">
           <div className="flex items-center justify-between">
             <div>
-              <p className="font-medium text-emerald-950 dark:text-cream-50">Dark Mode</p>
+              <p className="font-medium text-emerald-950 dark:text-cream-50">Tema e erret</p>
               <p className="text-xs text-emerald-950/50 dark:text-cream-200/50 mt-0.5">
-                {isDark ? 'Dark theme active' : 'Light theme active'}
+                {isDark ? 'Tema e erret aktive' : 'Tema e ndricuar aktive'}
               </p>
             </div>
             <button
@@ -142,14 +142,14 @@ export default function SettingsPage() {
       {/* Notifications */}
       <section className="mb-8">
         <h2 className="text-sm font-semibold text-emerald-950/40 dark:text-cream-50/40 uppercase tracking-wider mb-3">
-          Notifications
+          Njoftimet
         </h2>
         <div className="bg-white/60 dark:bg-night-800/60 rounded-xl p-4 border border-gold-500/10 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="font-medium text-emerald-950 dark:text-cream-50">Enable Notifications</p>
+              <p className="font-medium text-emerald-950 dark:text-cream-50">Aktivizo njoftimet</p>
               <p className="text-xs text-emerald-950/50 dark:text-cream-200/50 mt-0.5">
-                Status: {notifPermission}
+                Statusi: {notifPermission === 'granted' ? 'i aktivizuar' : notifPermission === 'denied' ? 'i bllokuar' : 'ne pritje'}
               </p>
             </div>
             <button
@@ -163,7 +163,7 @@ export default function SettingsPage() {
                   : 'bg-gold-500/10 text-gold-600 dark:text-gold-400 hover:bg-gold-500/20'
               }`}
             >
-              {notifPermission === 'granted' ? 'Enabled' : notifPermission === 'denied' ? 'Blocked' : 'Enable'}
+              {notifPermission === 'granted' ? 'Aktiv' : notifPermission === 'denied' ? 'Bllokuar' : 'Aktivizo'}
             </button>
           </div>
 
@@ -172,7 +172,7 @@ export default function SettingsPage() {
               <div className="border-t border-gold-500/10 pt-4 space-y-3">
                 <div className="flex items-center justify-between">
                   <label htmlFor="morningTime" className="text-sm text-emerald-950/70 dark:text-cream-200/70">
-                    Morning Adhkar
+                    Adhkaret e mengjesit
                   </label>
                   <input
                     type="time"
@@ -184,7 +184,7 @@ export default function SettingsPage() {
                 </div>
                 <div className="flex items-center justify-between">
                   <label htmlFor="eveningTime" className="text-sm text-emerald-950/70 dark:text-cream-200/70">
-                    Evening Adhkar
+                    Adhkaret e mbremjes
                   </label>
                   <input
                     type="time"
@@ -200,7 +200,7 @@ export default function SettingsPage() {
                 disabled={saving}
                 className="w-full py-2.5 rounded-lg bg-gold-500 text-night-900 font-semibold text-sm hover:bg-gold-400 disabled:opacity-50 transition-colors"
               >
-                {saving ? 'Saving...' : 'Save Notification Times'}
+                {saving ? 'Duke ruajtur...' : 'Ruaj oret e njoftimeve'}
               </button>
             </>
           )}
@@ -210,21 +210,21 @@ export default function SettingsPage() {
       {/* About */}
       <section>
         <h2 className="text-sm font-semibold text-emerald-950/40 dark:text-cream-50/40 uppercase tracking-wider mb-3">
-          About
+          Rreth
         </h2>
         <div className="bg-white/60 dark:bg-night-800/60 rounded-xl p-4 border border-gold-500/10 space-y-2">
           <div className="flex justify-between">
-            <span className="text-sm text-emerald-950/70 dark:text-cream-200/70">App</span>
+            <span className="text-sm text-emerald-950/70 dark:text-cream-200/70">Aplikacioni</span>
             <span className="text-sm font-medium text-emerald-950 dark:text-cream-50">Ummah</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-sm text-emerald-950/70 dark:text-cream-200/70">Version</span>
-            <span className="text-sm font-medium text-emerald-950 dark:text-cream-50">1.0.0</span>
+            <span className="text-sm text-emerald-950/70 dark:text-cream-200/70">Versioni</span>
+            <span className="text-sm font-medium text-emerald-950 dark:text-cream-50">2.0.0</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-sm text-emerald-950/70 dark:text-cream-200/70">Description</span>
+            <span className="text-sm text-emerald-950/70 dark:text-cream-200/70">Pershkrimi</span>
             <span className="text-sm text-emerald-950/60 dark:text-cream-200/60 text-right max-w-[200px]">
-              Islamic Dua &amp; Prayer Companion
+              Lutje &amp; Dua Islame
             </span>
           </div>
         </div>

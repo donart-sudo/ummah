@@ -23,7 +23,7 @@ export default function Header() {
 
         {/* Subtitle */}
         <p className="text-emerald-950/60 dark:text-cream-50/60 text-xs tracking-widest uppercase font-medium">
-          Dua &amp; Prayer Companion
+          Lutje &amp; Dua Islame
         </p>
       </div>
 
