@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS push_subscriptions (
 -- Notification preferences per subscription
 CREATE TABLE IF NOT EXISTS notification_preferences (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  subscription_id UUID NOT NULL REFERENCES push_subscriptions(id) ON DELETE CASCADE,
+  subscription_id UUID NOT NULL UNIQUE REFERENCES push_subscriptions(id) ON DELETE CASCADE,
   morning_enabled BOOLEAN DEFAULT true,
   morning_time TIME DEFAULT '06:00',
   evening_enabled BOOLEAN DEFAULT true,
