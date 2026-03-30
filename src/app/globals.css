@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Islamic Geometric Pattern ===== */
+.islamic-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4A843' stroke-width='0.5' opacity='0.08'%3E%3Cpath d='M0 0h80v80H0z'/%3E%3Cpath d='M40 0L0 40l40 40 40-40z'/%3E%3Cpath d='M20 0L0 20l20 20 20-20z'/%3E%3Cpath d='M60 0L40 20l20 20 20-20z'/%3E%3Cpath d='M20 40L0 60l20 20 20-20z'/%3E%3Cpath d='M60 40L40 60l20 20 20-20z'/%3E%3Ccircle cx='40' cy='40' r='10'/%3E%3Ccircle cx='0' cy='0' r='10'/%3E%3Ccircle cx='80' cy='0' r='10'/%3E%3Ccircle cx='0' cy='80' r='10'/%3E%3Ccircle cx='80' cy='80' r='10'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ===== Gold Shimmer Animation ===== */
+@keyframes goldShimmer {
+  0%, 100% {
+    background-position: -200% center;
+  }
+  50% {
+    background-position: 200% center;
+  }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    #D4A843 0%,
+    #E8C872 25%,
+    #D4A843 50%,
+    #E8C872 75%,
+    #D4A843 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 6s ease-in-out infinite;
+}
+
+/* ===== Arabesque Divider ===== */
+.arabesque-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #D4A843 50%,
+    transparent 100%
+  );
+}
+
+/* ===== Card Enter Animation ===== */
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-enter {
+  animation: cardIn 0.4s ease-out;
+}
+
+.card-animate {
+  animation: cardIn 0.4s ease-out both;
+}
+
+/* ===== Copy Pulse Animation ===== */
+@keyframes copyPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.copy-pulse {
+  animation: copyPulse 0.3s;
+}
+
+/* ===== Verse Number Hexagon ===== */
+.verse-hexagon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(135deg, #064E3B, #115E4A);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.dark .verse-hexagon {
+  background: linear-gradient(135deg, #D4A843, #E8C872);
+  color: #1A1A2E;
+}
+
+/* ===== Tab Scroll (Hide Scrollbar) ===== */
+.tab-scroll {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tab-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== Smooth Transitions ===== */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+/* Exclude elements where transitions cause issues */
+a, button, input, textarea, select {
+  transition-property: background-color, border-color, color, opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+/* ===== Star Border Repeating Gradient ===== */
+.star-border {
+  background: repeating-linear-gradient(
+    135deg,
+    #D4A843 0px,
+    #D4A843 2px,
+    transparent 2px,
+    transparent 8px
+  );
+}
+
+/* ===== Safe Area Padding for Bottom Nav ===== */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
