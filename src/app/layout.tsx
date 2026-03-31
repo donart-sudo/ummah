@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Noto_Sans_Arabic, Outfit, Lora } from 'next/font/google'
+import { Noto_Sans_Arabic, Outfit, IBM_Plex_Sans } from 'next/font/google'
 import './globals.css'
 import BottomNav from '@/components/layout/BottomNav'
 import ServiceWorkerRegistrar from '@/components/ServiceWorkerRegistrar'
@@ -18,11 +18,11 @@ const outfit = Outfit({
   display: 'swap',
 })
 
-const lora = Lora({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
-  variable: '--font-lora',
+  variable: '--font-reading',
   display: 'swap',
 })
 
@@ -55,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="sq" className={`dark ${notoSansArabic.variable} ${outfit.variable} ${lora.variable}`}>
+    <html lang="sq" className={`dark ${notoSansArabic.variable} ${outfit.variable} ${ibmPlexSans.variable}`}>
       <body className="font-body bg-cream-50 dark:bg-night-900 text-emerald-950 dark:text-cream-50 antialiased min-h-screen">
         <ServiceWorkerRegistrar />
         <main className="pb-20">

@@ -15,7 +15,7 @@ function getDeviceId(): string {
 }
 
 function getToday(): string {
-  return new Date().toISOString().split('T')[0]
+  return new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Tirane' })
 }
 
 function isNightTime(): boolean {
@@ -245,25 +245,14 @@ export default function HomePage() {
                 {/* Expanded content */}
                 {isExpanded && (
                   <div className="px-4 pb-4 border-t border-gold-500/5">
-                    {item.arabic && (
-                      <div className="mt-4 mb-3 p-4 rounded-xl bg-cream-50 dark:bg-night-900/50">
-                        <p className="font-arabic text-right text-xl leading-[2.2] text-emerald-950 dark:text-cream-50" dir="rtl">
-                          {item.arabic}
-                        </p>
-                      </div>
-                    )}
-
                     {item.ayahs && item.ayahs.length > 0 && (
                       <div className="mt-4 space-y-4">
                         {item.ayahs.map((ayah) => (
                           <div key={ayah.num} className="p-3 rounded-xl bg-cream-50 dark:bg-night-900/50">
                             <div className="flex items-start gap-2 mb-2">
                               <span className="verse-hexagon flex-shrink-0 text-[10px]">{ayah.num}</span>
-                              <p className="font-arabic text-right text-lg leading-[2] text-emerald-950 dark:text-cream-50 flex-1" dir="rtl">
-                                {ayah.arabic}
-                              </p>
                             </div>
-                            <p className="font-reading text-sm text-emerald-950/70 dark:text-cream-200/70 italic mt-2">
+                            <p className="font-reading text-base text-emerald-950/70 dark:text-cream-200/70 leading-[2] tracking-wide mt-2">
                               {ayah.transliteration}
                             </p>
                             <p className="text-xs text-emerald-950/50 dark:text-cream-200/50 mt-1">
@@ -275,7 +264,7 @@ export default function HomePage() {
                     )}
 
                     {item.transliteration && (
-                      <p className="font-reading text-sm text-emerald-950/70 dark:text-cream-200/70 italic mt-3">
+                      <p className="font-reading text-base text-emerald-950/70 dark:text-cream-200/70 leading-[2] tracking-wide mt-3">
                         {item.transliteration}
                       </p>
                     )}

@@ -55,12 +55,7 @@ export default function SurahCard({ dua, index }: SurahCardProps) {
                 {ayah.num}
               </div>
               <div className="flex-1 min-w-0">
-                {ayah.arabic && (
-                  <p className="font-arabic text-right text-lg leading-[2] text-emerald-950 dark:text-cream-50 mb-2" dir="rtl">
-                    {ayah.arabic}
-                  </p>
-                )}
-                <p className="font-reading italic text-[15px] text-emerald-800 dark:text-gold-400 leading-[1.8] tracking-wide">
+                <p className="font-reading text-base text-emerald-800 dark:text-gold-400 leading-[2] tracking-wide">
                   {ayah.transliteration}
                 </p>
                 <p className="text-xs text-emerald-950/60 dark:text-cream-200/60 leading-relaxed mt-1">

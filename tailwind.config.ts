@@ -34,7 +34,7 @@ const config: Config = {
       fontFamily: {
         arabic: ['var(--font-arabic)', 'Noto Sans Arabic', 'sans-serif'],
         body: ['Outfit', 'system-ui', 'sans-serif'],
-        reading: ['var(--font-lora)', 'Lora', 'Georgia', 'serif'],
+        reading: ['var(--font-reading)', 'IBM Plex Sans', 'system-ui', 'sans-serif'],
       },
     },
   },

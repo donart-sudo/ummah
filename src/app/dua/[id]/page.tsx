@@ -46,7 +46,7 @@ export default async function DuaPage({ params }: Props) {
                 {ayah.num}
               </div>
               <div className="flex-1 space-y-2">
-                <p className="font-reading italic text-xl text-emerald-800 dark:text-gold-400 leading-[1.8] tracking-wide">
+                <p className="font-reading text-xl text-emerald-800 dark:text-gold-400 leading-[2] tracking-wide">
                   {ayah.transliteration}
                 </p>
                 <p className="text-sm text-emerald-950/60 dark:text-cream-200/60 leading-relaxed">
@@ -78,7 +78,7 @@ export default async function DuaPage({ params }: Props) {
       {dua.type !== 'surah' && dua.type !== 'laylatul' && (
         <>
           {dua.transliteration && (
-            <p className="font-reading italic text-xl text-emerald-800 dark:text-gold-400 leading-[1.8] tracking-wide mb-6">
+            <p className="font-reading text-xl text-emerald-800 dark:text-gold-400 leading-[2] tracking-wide mb-6">
               {dua.transliteration}
             </p>
           )}

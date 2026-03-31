@@ -53,18 +53,9 @@ export default function DuaCard({ dua, index }: DuaCardProps) {
           <CopyButton dua={dua} />
         </div>
 
-        {/* Arabic */}
-        {dua.arabic && (
-          <div className="mb-3 p-3 rounded-xl bg-cream-50 dark:bg-night-900/50">
-            <p className="font-arabic text-right text-xl leading-[2.2] text-emerald-950 dark:text-cream-50" dir="rtl">
-              {dua.arabic}
-            </p>
-          </div>
-        )}
-
         {/* Transliteration */}
         {dua.transliteration && (
-          <p className="font-reading italic text-[17px] text-emerald-800 dark:text-gold-400 leading-[1.8] tracking-wide mb-3">
+          <p className="font-reading text-lg text-emerald-800 dark:text-gold-400 leading-[2] tracking-wide mb-3">
             {dua.transliteration}
           </p>
         )}
