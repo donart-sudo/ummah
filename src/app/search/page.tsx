@@ -13,7 +13,7 @@ export default function SearchPage() {
 
   return (
     <div className="max-w-lg mx-auto px-4 py-6">
-      <h1 className="font-amiri text-2xl font-bold text-emerald-950 dark:text-cream-50 mb-4">
+      <h1 className="font-arabic text-2xl font-bold text-emerald-950 dark:text-cream-50 mb-4">
         Kerko
       </h1>
 

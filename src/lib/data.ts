@@ -1,56 +1,13 @@
 import { Category, Dua } from '@/types'
 
 export const categories: Category[] = [
-  { id: 'morning', label: 'Duate e Mengjesit', description: 'Fillo diten me perkujtimin e Allahut. Lexoji keto pas namazit te Sabahut.', icon: 'sun' },
-  { id: 'night', label: 'Duate e Nates', description: 'Mbroje veten para gjumit me keto adhkare dhe lutje te mbremjes.', icon: 'moon' },
+  { id: 'surahs', label: 'Suret', description: 'Sure te plota kuranore per lexim javor dhe te perditshgem.', icon: 'book' },
   { id: 'travel', label: 'Udhetimi', description: 'Kerko mbrojtjen dhe lehtesin e Allahut kur nisesh per udhetim.', icon: 'plane' },
-  { id: 'protection', label: 'Mbrojtja', description: 'Mbroje veten me keto dua te fuqishme per siguri dhe mbrojtje hyjnore.', icon: 'shield' },
-  { id: 'wealth', label: 'Pasuria & Rizku', description: 'Kerko nga Allahu furnizim hallall, udhezim dhe pavaresine.', icon: 'coins' },
-  { id: 'mental', label: 'Shendet Mendor', description: 'Gjej qetesi dhe lehtes nga brengat, pikellimi dhe ankthi permes ketyre lutjeve.', icon: 'heart' },
-  { id: 'surahs', label: 'Suret', description: 'Sure te plota dhe ajete te fuqishme kuranore per lexim te perditshgem.', icon: 'book' },
   { id: 'salah', label: 'Namazi', description: 'Leximet thelbesore per namazin tuaj te perditshgem — Etehijatu, Salavatet dhe duate kuranore.', icon: 'clock' },
   { id: 'special', label: 'Te Vecanta', description: 'Lutje per Natën e Kadrit, Ramazanin dhe raste te tjera te bekuara.', icon: 'star' },
 ]
 
 export const duas: Dua[] = [
-  // ═══ MORNING ═══
-  {
-    id: 1, title: 'Dhikri i Mengjesit — Teuhidi', category: 'morning', tags: ['morning'],
-    transliteration: "La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu, wa Huwa 'ala kulli shay'in Qadir.",
-    translation: 'Askush nuk meriton te adhurohet pervec Allahut, i vetem, pa ortak. Atij i takon sundimi dhe lavderimi, dhe Ai eshte i Plotfuqishem mbi cdo gje.',
-    source: 'Sahih al-Bukhari 6403', status: 'Sahih',
-    note: 'Thuaje 100 here ne mengjes per shperblim te madh dhe mbrojtje.'
-  },
-  {
-    id: 2, title: 'Duaja kur del nga shtepia', category: 'morning', tags: ['morning', 'protection'],
-    transliteration: "Bismillahi, tawakkaltu 'alallahi, wa la hawla wa la quwwata illa billah.",
-    translation: 'Ne emrin e Allahut, i besoj Allahut, dhe nuk ka fuqi e as force pervec Allahut.',
-    source: "Jami' at-Tirmidhi 3426", status: 'Sahih',
-    note: 'Kur e thua kete, udhezohem, mbrohem dhe ruhem, dhe shejtani largohet.'
-  },
-  {
-    id: 3, title: 'Sejjidul Istighfar — Zoteriu i Faljes', category: 'morning', tags: ['morning', 'night'],
-    transliteration: "Allahumma Anta Rabbi, la ilaha illa Anta, khalaqtani wa ana 'abduka, wa ana 'ala 'ahdika wa wa'dika mastata'tu. A'udhu bika min sharri ma sana'tu, abu'u laka bini'matika 'alayya, wa abu'u bidhanbi, faghfir li, fa innahu la yaghfirudh-dhunuba illa Anta.",
-    translation: "O Allah, Ti je Zoti im, askush nuk meriton te adhurohet pervec Teje. Ti me krijove dhe une jam robi Yt, dhe qendroj ne besen dhe premtimin Tend sa te mundem. Kerkoj mbrojtje nga Ti prej te keqes qe kam bere. Pranoj mirsite e Tua ndaj meje, dhe pranoj mekatin tim, prandaj me fal, sepse askush nuk i fal mekatet pervec Teje.",
-    source: 'Sahih al-Bukhari 6306', status: 'Sahih',
-    note: 'Kush e thote kete ne mengjes me besim te forte dhe vdes ate dite, do te jete nga banoret e Xhenetit.'
-  },
-
-  // ═══ NIGHT ═══
-  {
-    id: 4, title: 'Ajetul Kursi', category: 'night', tags: ['night', 'protection', 'surahs'],
-    transliteration: "Allahu la ilaha illa Huwal-Hayyul-Qayyum. La ta'khudhuhuu sinatun wa la nawm. Lahu ma fis-samawati wa ma fil-ard. Man dhal-ladhi yashfa'u 'indahu illa bi-idhnih. Ya'lamu ma bayna aydihim wa ma khalfahum. Wa la yuhituna bishay'in min 'ilmihi illa bima sha'. Wasi'a kursiyyuhus-samawati wal-ard. Wa la ya'uduhu hifdhuhuma. Wa Huwal-'Aliyyul-'Adhim.",
-    translation: 'Allahu! Nuk ka te adhuruar tjeter pervec Tij, te Perjeteshmit, Mbajtesit te gjithckajes. Nuk e kap As gjumi e as kotigja. E Tij eshte cdo gje qe eshte ne qiej dhe ne toke. Kush mund te nderhyje tek Ai pa lejen e Tij? Ai e di cfare ka perpara tyre dhe cfare do te kete pas tyre, dhe ata nuk perfshjine asgje nga dituria e Tij pervec asaj qe Ai do. Kursia e Tij shtrihet mbi qiejt dhe token, dhe ruajtja e tyre nuk e lodh Ate. Ai eshte me i Larti, me i Madhi.',
-    source: 'Quran 2:255', status: 'Quranic',
-    note: 'Kush lexon Ajetul Kursin para gjumit, Allahu cakton nje engjell roje qe ta mbroje deri ne mengjes.'
-  },
-  {
-    id: 5, title: 'Duaja para gjumit', category: 'night', tags: ['night'],
-    transliteration: "Allahumma innaka khalaqta nafsi wa Anta tawaffaha, laka mamatuha wa mahyaha. In ahyaytaha fahfadhha, wa in amattaha faghfir laha. Allahumma inni as'alukal-'afiyah.",
-    translation: 'O Allah, Ti e krijove shpirtin tim dhe Ti e merr ate mbrapa. Ty i takon vdekja dhe jeta e tij. Nese i jep jete, mbroje; e nese e vdes, fale. O Allah, te kerkoj miresine.',
-    source: 'Sahih Muslim 2712', status: 'Sahih'
-  },
-
   // ═══ TRAVEL ═══
   {
     id: 6, title: 'Duaja e Udhetimit — Dua al-Safar', category: 'travel', tags: ['travel'],
@@ -60,69 +17,9 @@ export const duas: Dua[] = [
     note: 'Lexoje kete kur hipni ne cdo mjet transporti — makine, avion ose anije.'
   },
 
-  // ═══ PROTECTION ═══
-  {
-    id: 7, title: 'La Hawla wa La Quwwata illa Billah', category: 'protection', tags: ['protection', 'morning'],
-    transliteration: 'La hawla wa la quwwata illa billah.',
-    translation: 'Nuk ka fuqi e as force pervec Allahut.',
-    source: 'Sahih al-Bukhari 4205', status: 'Sahih',
-    note: 'Nje thesar nga thesaret e Xhenetit. Thuaje shpesh.'
-  },
-  {
-    id: 8, title: 'Duaja per mbrojtje nga mekati', category: 'protection', tags: ['protection'],
-    transliteration: 'Allahummaghfir li dhanbi, wa tahhir qalbi, wa hassin farji minal-fawahish.',
-    translation: 'O Allah, me fal mekatin, me pastro zemren, dhe me ruaj nderin nga imoraliteti.',
-    source: 'Sunan Abu Dawud 4857', status: 'Hasan'
-  },
-  {
-    id: 9, title: 'Duaja e Profetit Nuh — Kunder shtypjes', category: 'protection', tags: ['protection', 'mental'],
-    transliteration: 'Rabbi inni maghlobun fantasir.',
-    translation: 'Zoti im, une jam i mundur, prandaj me ndihmo.',
-    source: 'Quran 54:10', status: 'Quranic',
-    note: 'Thirrja e deshperuar e Profetit Nuh kur populli i tij e refuzoi. Nje dua e fuqishme ne kohe pashpresie.'
-  },
-
-  // ═══ WEALTH & RIZQ ═══
-  {
-    id: 10, title: 'Duaja per furnizim hallall', category: 'wealth', tags: ['wealth'],
-    transliteration: "Allahummakfini bihalalika 'an haramika, wa aghnini bifadlika 'amman siwak.",
-    translation: 'O Allah, me mjafto me ate qe ke lejuar qe te mos kem nevoje per ate qe ke ndaluar, dhe me bej te pasur me bujarine Tende qe te mos kerkoj nga askush tjeter pervec Teje.',
-    source: "Jami' at-Tirmidhi 3563", status: 'Hasan',
-    note: 'E mesoi Profeti ﷺ Aliun kur ishte ne borxh.'
-  },
-  {
-    id: 11, title: 'Duaja per udhezim dhe pavaresine', category: 'wealth', tags: ['wealth', 'morning'],
-    transliteration: "Allahumma inni as'alukal-huda wat-tuqa wal-'afafa wal-ghina.",
-    translation: 'O Allah, te kerkoj udhezim, devotshmeri, nder dhe pavaresine.',
-    source: 'Sahih Muslim 2721', status: 'Sahih'
-  },
-  {
-    id: 12, title: 'Besimi ne planin e Allahut', category: 'wealth', tags: ['wealth'],
-    transliteration: "Wa ma tawfiqi illa billahi 'alayhi tawakkaltu wa ilayhi unib.",
-    translation: 'Suksesi im nuk eshte pervec nga Allahu. Atij i jam besuar dhe tek Ai kthehem.',
-    source: 'Quran 11:88', status: 'Quranic',
-    note: 'Fjalet e Profetit Shuajb, qe na kujtojne se cdo sukses vjen nga Allahu.'
-  },
-
-  // ═══ MENTAL HEALTH ═══
-  {
-    id: 13, title: 'Lehtesim nga depresioni dhe ankthi', category: 'mental', tags: ['mental', 'protection'],
-    transliteration: "Allahumma inni a'udhu bika minal-hammi wal-hazani, wa a'udhu bika minal-'ajzi wal-kasali, wa a'udhu bika minal-jubni wal-bukhli, wa a'udhu bika min ghalabatid-dayni wa qahrir-rijal.",
-    translation: 'O Allah, kerkoj mbrojtje tek Ti nga brenga dhe pikellimi, nga pafuqishmeria dhe dembelizmi, nga frika dhe koprracia, dhe nga mbytja ne borxhe dhe shtypja e njerezve.',
-    source: 'Sahih al-Bukhari 6369', status: 'Sahih',
-    note: 'Profeti ﷺ e thoshte kete dua shpesh. Mbulon cdo forme te stresit emocional.'
-  },
-  {
-    id: 14, title: 'Duaja e Profetit Musa — Kur je ne nevoje', category: 'mental', tags: ['mental', 'wealth'],
-    transliteration: 'Rabbi inni lima anzalta ilayya min khayrin faqir.',
-    translation: 'Zoti im, une kam nevoje per cfaredo te mire qe do te me dergosh.',
-    source: 'Quran 28:24', status: 'Quranic',
-    note: 'Profeti Musa e tha kete kur ishte i huaj pa asgje — dhe Allahu iu pergjigj menjehere me strehim, familje dhe furnizim.'
-  },
-
   // ═══ SURAHS ═══
   {
-    id: 15, title: 'Surja Al-Mulk — Sundimi', category: 'surahs', tags: ['surahs', 'night'],
+    id: 15, title: 'Surja Al-Mulk — Sundimi', category: 'surahs', tags: ['surahs'],
     type: 'surah',
     translation: 'Mbron nga denimi i varrit. Lexoje cdo nate para gjumit.',
     source: 'Quran 67:1-30', status: 'Quranic',

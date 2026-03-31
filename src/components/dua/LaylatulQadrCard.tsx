@@ -21,7 +21,7 @@ export default function LaylatulQadrCard({ dua, index }: LaylatulQadrCardProps) 
         {/* Header */}
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex-1 min-w-0">
-            <h3 className="font-amiri text-lg font-bold text-emerald-950 dark:text-cream-50 leading-snug">
+            <h3 className="font-arabic text-lg font-bold text-emerald-950 dark:text-cream-50 leading-snug">
               {dua.title}
             </h3>
             <div className="flex items-center gap-2 mt-1.5">

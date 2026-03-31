@@ -31,7 +31,7 @@ export default async function CategoryPage({ params }: Props) {
           </svg>
         </Link>
         <div>
-          <h1 className="font-amiri text-xl font-bold text-emerald-950 dark:text-cream-50">
+          <h1 className="font-arabic text-xl font-bold text-emerald-950 dark:text-cream-50">
             {category.label}
           </h1>
         </div>

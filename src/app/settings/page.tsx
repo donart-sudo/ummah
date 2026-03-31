@@ -104,7 +104,7 @@ export default function SettingsPage() {
             <polyline points="15 18 9 12 15 6" />
           </svg>
         </Link>
-        <h1 className="font-amiri text-2xl font-bold text-emerald-950 dark:text-cream-50">
+        <h1 className="font-arabic text-2xl font-bold text-emerald-950 dark:text-cream-50">
           Cilesimet
         </h1>
       </div>

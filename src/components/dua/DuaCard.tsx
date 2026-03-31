@@ -41,7 +41,7 @@ export default function DuaCard({ dua, index }: DuaCardProps) {
           <div className="flex-1 min-w-0">
             <Link
               href={`/dua/${dua.id}`}
-              className="font-amiri text-lg font-bold text-emerald-950 dark:text-cream-50 hover:text-gold-600 dark:hover:text-gold-400 leading-snug"
+              className="font-arabic text-lg font-bold text-emerald-950 dark:text-cream-50 hover:text-gold-600 dark:hover:text-gold-400 leading-snug"
             >
               {dua.title}
             </Link>
@@ -52,6 +52,15 @@ export default function DuaCard({ dua, index }: DuaCardProps) {
           </div>
           <CopyButton dua={dua} />
         </div>
+
+        {/* Arabic */}
+        {dua.arabic && (
+          <div className="mb-3 p-3 rounded-xl bg-cream-50 dark:bg-night-900/50">
+            <p className="font-arabic text-right text-xl leading-[2.2] text-emerald-950 dark:text-cream-50" dir="rtl">
+              {dua.arabic}
+            </p>
+          </div>
+        )}
 
         {/* Transliteration */}
         {dua.transliteration && (

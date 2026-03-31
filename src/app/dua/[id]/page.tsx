@@ -33,7 +33,7 @@ export default async function DuaPage({ params }: Props) {
       </div>
 
       {/* Title */}
-      <h1 className="font-amiri text-2xl font-bold text-emerald-950 dark:text-cream-50 mb-6">
+      <h1 className="font-arabic text-2xl font-bold text-emerald-950 dark:text-cream-50 mb-6">
         {dua.title}
       </h1>
 

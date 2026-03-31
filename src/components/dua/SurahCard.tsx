@@ -28,7 +28,7 @@ export default function SurahCard({ dua, index }: SurahCardProps) {
         {/* Header */}
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex-1 min-w-0">
-            <h3 className="font-amiri text-lg font-bold text-emerald-950 dark:text-cream-50 leading-snug">
+            <h3 className="font-arabic text-lg font-bold text-emerald-950 dark:text-cream-50 leading-snug">
               {dua.title}
             </h3>
             <div className="flex items-center gap-2 mt-1.5 text-xs text-emerald-950/50 dark:text-cream-200/50">
@@ -55,6 +55,11 @@ export default function SurahCard({ dua, index }: SurahCardProps) {
                 {ayah.num}
               </div>
               <div className="flex-1 min-w-0">
+                {ayah.arabic && (
+                  <p className="font-arabic text-right text-lg leading-[2] text-emerald-950 dark:text-cream-50 mb-2" dir="rtl">
+                    {ayah.arabic}
+                  </p>
+                )}
                 <p className="font-reading italic text-[15px] text-emerald-800 dark:text-gold-400 leading-[1.8] tracking-wide">
                   {ayah.transliteration}
                 </p>

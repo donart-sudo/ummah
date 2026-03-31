@@ -92,7 +92,7 @@ export default function CategoryCard({ category, count, index }: CategoryCardPro
       <div className="mb-3">
         <CategoryIcon name={category.icon} />
       </div>
-      <h3 className="font-amiri text-lg font-bold text-emerald-950 dark:text-cream-50 leading-snug">
+      <h3 className="font-arabic text-lg font-bold text-emerald-950 dark:text-cream-50 leading-snug">
         {category.label}
       </h3>
       <p className="text-xs text-emerald-950/50 dark:text-cream-200/50 mt-1">
