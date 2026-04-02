@@ -1,73 +1,43 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { morningRoutine, nightRoutine } from '@/lib/routine-data'
 import { RoutineItem } from '@/types'
 
-function getDeviceId(): string {
-  if (typeof window === 'undefined') return ''
-  let id = localStorage.getItem('ummah_device_id')
-  if (!id) {
-    id = crypto.randomUUID()
-    localStorage.setItem('ummah_device_id', id)
-  }
-  return id
-}
-
-function getToday(): string {
-  return new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Tirane' })
+// Returns the "routine day" key — resets at 5 AM Europe/Tirane
+function getRoutineDay(): string {
+  const now = new Date()
+  // Shift back 5 hours so the day boundary is at 5 AM
+  const shifted = new Date(now.getTime() - 5 * 60 * 60 * 1000)
+  return shifted.toLocaleDateString('en-CA', { timeZone: 'Europe/Tirane' })
 }
 
 function isNightTime(): boolean {
   const hour = new Date().getHours()
-  return hour >= 18 || hour < 6
+  return hour >= 18 || hour < 5
 }
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<'morning' | 'night'>(isNightTime() ? 'night' : 'morning')
   const [completedItems, setCompletedItems] = useState<Set<string>>(new Set())
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set())
-  const [loading, setLoading] = useState(true)
-  const [saving, setSaving] = useState<string | null>(null)
 
-  const today = getToday()
+  const routineDay = getRoutineDay()
   const routine = activeTab === 'morning' ? morningRoutine : nightRoutine
   const totalItems = routine.length
   const completedCount = routine.filter(item => completedItems.has(`${activeTab}-${item.id}`)).length
   const progress = totalItems > 0 ? (completedCount / totalItems) * 100 : 0
 
-  const loadProgress = useCallback(async () => {
-    const deviceId = getDeviceId()
-    if (!deviceId) return
-
-    try {
-      const res = await fetch(`/api/progress?device_id=${deviceId}&date=${today}`)
-      const json = await res.json()
-      if (json.data) {
-        const items = new Set<string>()
-        for (const row of json.data) {
-          items.add(`${row.routine_type}-${row.item_id}`)
-        }
-        setCompletedItems(items)
-      }
-    } catch {
-      const stored = localStorage.getItem(`ummah_progress_${today}`)
-      if (stored) {
-        setCompletedItems(new Set(JSON.parse(stored)))
-      }
-    } finally {
-      setLoading(false)
-    }
-  }, [today])
-
   useEffect(() => {
-    loadProgress()
-  }, [loadProgress])
+    const stored = localStorage.getItem(`ummah_rutina_${routineDay}`)
+    if (stored) {
+      setCompletedItems(new Set(JSON.parse(stored)))
+    }
+  }, [routineDay])
 
-  async function toggleItem(item: RoutineItem) {
+  function toggleItem(item: RoutineItem) {
     const key = `${activeTab}-${item.id}`
     const isCompleted = completedItems.has(key)
-    const deviceId = getDeviceId()
 
     const next = new Set(completedItems)
     if (isCompleted) {
@@ -76,29 +46,7 @@ export default function HomePage() {
       next.add(key)
     }
     setCompletedItems(next)
-    setSaving(key)
-
-    localStorage.setItem(`ummah_progress_${today}`, JSON.stringify([...next]))
-
-    try {
-      if (isCompleted) {
-        await fetch('/api/progress', {
-          method: 'DELETE',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ device_id: deviceId, date: today, routine_type: activeTab, item_id: item.id }),
-        })
-      } else {
-        await fetch('/api/progress', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ device_id: deviceId, date: today, routine_type: activeTab, item_id: item.id }),
-        })
-      }
-    } catch {
-      // localStorage has the data
-    } finally {
-      setSaving(null)
-    }
+    localStorage.setItem(`ummah_rutina_${routineDay}`, JSON.stringify([...next]))
   }
 
   function toggleExpand(itemId: string) {
@@ -112,7 +60,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
+    <div className="max-w-lg mx-auto px-4 pb-8">
       {/* Header */}
       <div className="mb-5">
         <p className="text-sm text-gold-500 font-medium">As-salamu alaykum</p>
@@ -180,17 +128,11 @@ export default function HomePage() {
       </div>
 
       {/* Items */}
-      {loading ? (
-        <div className="flex items-center justify-center py-12">
-          <div className="w-8 h-8 border-2 border-gold-500/30 border-t-gold-500 rounded-full animate-spin" />
-        </div>
-      ) : (
         <div className="space-y-3">
           {routine.map((item, idx) => {
             const key = `${activeTab}-${item.id}`
             const isCompleted = completedItems.has(key)
             const isExpanded = expandedItems.has(item.id)
-            const isSaving = saving === key
 
             return (
               <div
@@ -206,12 +148,11 @@ export default function HomePage() {
                 <div className="flex items-start gap-3 p-4">
                   <button
                     onClick={() => toggleItem(item)}
-                    disabled={isSaving}
                     className={`mt-0.5 flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                       isCompleted
                         ? 'bg-emerald-700 border-emerald-700 text-white'
                         : 'border-gold-500/40 hover:border-gold-500'
-                    } ${isSaving ? 'opacity-50' : ''}`}
+                    }`}
                   >
                     {isCompleted && (
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -291,7 +232,6 @@ export default function HomePage() {
             )
           })}
         </div>
-      )}
     </div>
   )
 }

@@ -58,7 +58,7 @@ export default function RootLayout({
     <html lang="sq" className={`dark ${notoSansArabic.variable} ${outfit.variable} ${ibmPlexSans.variable}`}>
       <body className="font-body bg-cream-50 dark:bg-night-900 text-emerald-950 dark:text-cream-50 antialiased min-h-screen">
         <ServiceWorkerRegistrar />
-        <main className="pb-20">
+        <main className="pb-20 pt-12">
           {children}
         </main>
         <BottomNav />
