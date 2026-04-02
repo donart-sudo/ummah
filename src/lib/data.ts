@@ -88,6 +88,13 @@ export const duas: Dua[] = [
     source: 'Quran 14:41', status: 'Quranic',
     note: 'Duaja e Profetit Ibrahim. Beje kete dua rregullisht per prinderit.'
   },
+  {
+    id: 22, title: 'Duaja e Kunutit — Salatul Vitr', category: 'salah', tags: ['salah'],
+    transliteration: "Allahumma-hdini fiman hadayt, wa 'afini fiman 'afayt, wa tawallani fiman tawallayt, wa barik li fima a'tayt, wa qini sharra ma qadayt, fa innaka taqdi wa la yuqda 'alayk, wa innahu la yadhillu man walayt, wa la ya'izzu man 'adayt, tabarakta Rabbana wa ta'alayt. Allahumma inni a'udhu biridaka min sakhatik, wa bimu'afatika min 'uqubatik, wa a'udhu bika mink, la uhsi thana'an 'alayk, Anta kama athnayta 'ala nafsik.",
+    translation: 'O Allah, me udhezo mes atyre qe i ke udhezuar, me jep shendet mes atyre qe u ke dhene shendet, me merre nen kujdesin Tend mes atyre qe i ke marre nen kujdes, me beko ne ate qe me ke dhene, dhe me ruaj nga e keqja e asaj qe ke caktuar. Vertet Ti vendos dhe nuk vendoset mbi Ty. Nuk poshtersohet ai qe Ti e merr nen mbrojtje, dhe nuk lartesiohet ai qe Ti e armiqeson. I bekuar je, o Zoti yne, dhe i Lartesuar. O Allah, kerkoj mbrojtje ne kenaqesine Tende nga zemrimi Yt, ne faljen Tende nga ndeshkimi Yt. Kerkoj mbrojtje tek Ti nga Ti. Nuk mund te numeroj lavderime per Ty; Ti je ashtu sic e ke lavderuar Veten.',
+    source: 'Sunan Abu Dawud 1425, Sunan an-Nasai 1746', status: 'Sahih',
+    note: 'Lexohet ne rekatin e fundit te namazit te Vitrit, pas rukuse ose para saj. Hasan ibn Ali r.a. tha: "I Derguari i Allahut ﷺ me mesoi fjale qe t\'i them ne Kunutin e Vitrit."'
+  },
 
   // ═══ SPECIAL OCCASIONS ═══
   {
